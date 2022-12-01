@@ -35,5 +35,8 @@ public class GreetController {
     public List<GreetModel> greetingModelsFindAll(){
         return greetService.getAll();
     }
-
+    @PutMapping("/update/{id}")
+    public GreetModel update(@PathVariable int id, @RequestBody GreetModel greetModel){
+        return greetService.updateGreet(greetModel,id);
+    }
 }

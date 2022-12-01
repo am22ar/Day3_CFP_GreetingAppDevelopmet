@@ -33,4 +33,12 @@ public class GreetService {
         List<GreetModel> greetingModels=irepoGreet.findAll();
         return greetingModels;
     }
+    public GreetModel updateGreet(GreetModel greetModel,int id) {
+        Optional<GreetModel> greetModel1;//boolean type
+        greetModel1=irepoGreet.findById(id);
+        greetModel1.get().setFirstName(greetModel.getFirstName());
+        greetModel1.get().setLastName(greetModel.getLastName());
+        irepoGreet.save(greetModel1.get());
+        return greetModel1.get();
+    }
 }
