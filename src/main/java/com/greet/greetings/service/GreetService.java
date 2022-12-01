@@ -41,4 +41,7 @@ public class GreetService {
         irepoGreet.save(greetModel1.get());
         return greetModel1.get();
     }
+    public void deleteId(int id){
+        irepoGreet.deleteById(id);
+    }
 }

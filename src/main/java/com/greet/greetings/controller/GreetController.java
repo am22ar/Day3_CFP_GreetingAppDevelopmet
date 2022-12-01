@@ -39,4 +39,8 @@ public class GreetController {
     public GreetModel update(@PathVariable int id, @RequestBody GreetModel greetModel){
         return greetService.updateGreet(greetModel,id);
     }
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable int id){
+        greetService.deleteId(id);
+    }
 }
