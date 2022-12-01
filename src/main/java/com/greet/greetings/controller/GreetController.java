@@ -1,30 +1,21 @@
 package com.greet.greetings.controller;
 
+import com.greet.greetings.service.GreetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/start")
 public class GreetController {
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(@RequestParam(value = "message") String message){
-        return "Hello "+message;
-    }
-    @GetMapping("/get")
+    @Autowired
+    GreetService greetService;
+    @GetMapping("/hello")
     public String get(@RequestBody String name){
-        return "Hello "+name;
+        return greetService.getHello(name);
     }
-    @PostMapping("/post")
-    public String post(@RequestParam(value = "firstName") String firstName,
-                       @RequestParam(value = "lastName") String lastName){
-        return "Welcome "+firstName+" "+lastName+" !!!!!";
+    @GetMapping("/simplegreet")
+    public String simplegreet(){
+        return greetService.getSimpleGreet();
     }
 
-    @PutMapping("/put")
-    public String put(@RequestParam (value = "msg") String msg){
-        return msg;
-    }
-    @DeleteMapping("/delete/{etc}")
-    public String delete(@PathVariable String etc){
-        return "hello "+etc;
-    }
 }
