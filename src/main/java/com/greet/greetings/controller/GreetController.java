@@ -1,6 +1,6 @@
 package com.greet.greetings.controller;
 
-import com.greet.greetings.model.UserModel;
+import com.greet.greetings.model.GreetModel;
 import com.greet.greetings.service.GreetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,17 +10,19 @@ import org.springframework.web.bind.annotation.*;
 public class GreetController {
     @Autowired
     GreetService greetService;
-    @GetMapping("/hello")
-    public String get(@RequestBody String name){
-        return greetService.getHello(name);
-    }
     @GetMapping("/simplegreet")
     public String simplegreet(){
         return greetService.getSimpleGreet();
     }
-    @PostMapping("/usergreeting")
-    public String userGreeting(@RequestBody UserModel userModel){
-        return greetService.getUserGreet(userModel);
+    //displaying data in Request body
+    @PostMapping
+    public String getUsers(@RequestBody String firstName, String lastName) {
+        return greetService.user(firstName,lastName);
+    }
+    //adding new user to database
+    @PostMapping("/savedUser")
+    public GreetModel savedUser(@RequestBody GreetModel greetingModel){
+        return greetService.saveUser(greetingModel);
     }
 
 }

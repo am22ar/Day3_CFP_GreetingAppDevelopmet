@@ -1,6 +1,23 @@
 package com.greet.greetings.model;
 
-public class UserModel {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class GreetModel {
+    @Id
+            @GeneratedValue
+            int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     String firstName;
     String lastName;
 
