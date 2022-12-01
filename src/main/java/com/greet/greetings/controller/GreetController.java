@@ -5,6 +5,8 @@ import com.greet.greetings.service.GreetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/start")
 public class GreetController {
@@ -28,6 +30,10 @@ public class GreetController {
     public GreetModel gets(@PathVariable int id)
     {
         return greetService.getById(id);
+    }
+    @GetMapping("/all")
+    public List<GreetModel> greetingModelsFindAll(){
+        return greetService.getAll();
     }
 
 }

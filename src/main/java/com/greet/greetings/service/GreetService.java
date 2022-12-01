@@ -5,6 +5,7 @@ import com.greet.greetings.repository.IrepoGreet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,5 +27,10 @@ public class GreetService {
     public GreetModel getById(int id){
         GreetModel greetingModel =irepoGreet.findById(id).get();
         return greetingModel;
+    }
+
+    public List<GreetModel> getAll(){
+        List<GreetModel> greetingModels=irepoGreet.findAll();
+        return greetingModels;
     }
 }
