@@ -23,4 +23,8 @@ public class GreetService {
     public GreetModel saveUser(GreetModel greetModel) {
         return irepoGreet.save(greetModel);
     }
+    public GreetModel getById(int id){
+        GreetModel greetingModel =irepoGreet.findById(id).get();
+        return greetingModel;
+    }
 }

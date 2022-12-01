@@ -24,5 +24,10 @@ public class GreetController {
     public GreetModel savedUser(@RequestBody GreetModel greetingModel){
         return greetService.saveUser(greetingModel);
     }
+    @GetMapping("/getting/{id}")
+    public GreetModel gets(@PathVariable int id)
+    {
+        return greetService.getById(id);
+    }
 
 }
