@@ -1,5 +1,6 @@
 package com.greet.greetings.controller;
 
+import com.greet.greetings.model.UserModel;
 import com.greet.greetings.service.GreetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,10 @@ public class GreetController {
     @GetMapping("/simplegreet")
     public String simplegreet(){
         return greetService.getSimpleGreet();
+    }
+    @PostMapping("/usergreeting")
+    public String userGreeting(@RequestBody UserModel userModel){
+        return greetService.getUserGreet(userModel);
     }
 
 }
